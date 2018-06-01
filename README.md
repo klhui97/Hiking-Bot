@@ -10,4 +10,9 @@ This project cannot be run beacuse the API key is hidden.
 ## Screenshot
 
 ![Alt text](resource/login.png?raw=true "Title")
-
+![Alt text](resource/main.png?raw=true "Title")
+![Alt text](resource/chatbot1.png?raw=true "Title")
+![Alt text](resource/chatbot2.png?raw=true "Title")
+![Alt text](resource/chatbot3.png?raw=true "Title")
+![Alt text](resource/chatbot4.png?raw=true "Title")
+![Alt text](resource/ar.png?raw=true "Title")
