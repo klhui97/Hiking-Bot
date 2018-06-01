@@ -1,4 +1,4 @@
-# Project Title
+# Hike Easy
 
 This is my Industrial Design Project with Oursky. I worked with one more student and was assisted by Oursky's mentors.
 This project is iOS app which support iOS 11 or above.
