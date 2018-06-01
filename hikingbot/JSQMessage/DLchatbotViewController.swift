@@ -1,0 +1,368 @@
+//
+//  DLchatbotViewController.swift
+//  KLPlatform
+//
+//  Created by KL on 10/2/2018.
+//  Copyright © 2018 KL. All rights reserved.
+//
+
+import UIKit
+import JSQMessagesViewController
+import ApiAI
+import SKYKit
+
+class DLchatbotViewController: JSQMessagesViewController {
+  
+  // MARK: - Constant
+  let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: (UIColor(displayP3Red: CGFloat(72.0/255.0), green: CGFloat(142.0/255.0), blue: CGFloat(248.0/255.0), alpha: 1.0)))
+  let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.init(red: 42/255.0, green: 177/255.0, blue: 229/255.0, alpha: 1))
+  let welcomeMessage = "How can I help you? I can tell you about hikes in HK! You can also click the + button to view more option. Today’s top hike is Wan Chai. Do you want to know more about it?"
+  let welcomeMessage2 = "Here is some information about Wan Chai: Wan Chai is 3 KM long in total, and will take around 1.5 hours to complete. It is of moderate difficulty. If you want to go you can just click the #route-wanchai Button."
+  let VIEWHEIGHT: CGFloat = 50
+  let speechSynthesizer = AVSpeechSynthesizer()
+  
+  // MARK: - Variable
+  var messages = [JSQMessage]()
+  var isMute = false
+  var suggestions: [String] = []
+
+  
+  // MARK: - Show suggestion method
+  private func showSuggestinoKeyword(){
+    let viewWidth = self.view.bounds.width
+    let buttonHeight: CGFloat = VIEWHEIGHT - 20
+    let buttonWidth = (self.view.bounds.width - 40)/3
+    
+    view.viewWithTag(100)?.removeFromSuperview()
+    let selectableView = UIView(frame: CGRect(x: 0, y: self.inputToolbar.frame.origin.y - VIEWHEIGHT, width: viewWidth, height: VIEWHEIGHT))
+    var tmpX: CGFloat = 10
+    selectableView.tag = 100
+    
+    for suggestion in suggestions{
+      let button = RoundButton(frame: CGRect(x: tmpX, y: 10, width: buttonWidth, height: buttonHeight))
+      button.setTitle(suggestion, for: .normal)
+      button.titleLabel?.adjustsFontSizeToFitWidth = true
+      button.addTarget(self, action:#selector(sendSuggestionChat), for: .touchUpInside)
+      selectableView.addSubview(button)
+      tmpX += 10 + buttonWidth
+    }
+    
+    self.view.addSubview(selectableView)
+  }
+  
+  @objc private func sendSuggestionChat(sender:UIButton!) {
+    view.viewWithTag(100)?.removeFromSuperview()
+    let body = sender.titleLabel?.text
+    let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: body)
+    messages.append(message!)
+    finishSendingMessage()
+    passMessageToBot(body: body!)
+  }
+  
+  // MARK: - Speech to text method
+  private func speechAndText(text: String?) {
+    if !isMute{
+      let speechUtterance = AVSpeechUtterance(string: text!)
+      if let textToSpeech = text{
+        if NLP.determineLanguage(for: textToSpeech) == "zh-Hant"{
+          speechUtterance.voice  = AVSpeechSynthesisVoice(language: "zh-HK") //usg chinese
+        }
+        speechSynthesizer.speak(speechUtterance)
+      }
+    }
+  }
+  
+  // MARK: - Intent handler
+  private func intentHandler(response: AIResponse){
+    if let intent = response.result.metadata.intentName{
+      print(intent)
+      
+      let textResponse = response.result.fulfillment.messages[0]["speech"] as! String
+      if (intent.hasPrefix("show route -")){
+        let tokens = textResponse.split(separator: ",")
+        var text = "You can start from "
+        var loc: [String] = []
+        var i = 0
+        for token in tokens{
+          loc.append(String(token))
+          i += 1
+          text += token
+          if i < tokens.count{
+            text += " -> "
+          }
+        }
+        text += ". I will show it on the map soon."
+        self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: text))
+        self.finishReceivingMessage()
+        self.speechAndText(text: text)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+          let vc = MapViewController()
+          vc.destinations = loc
+          self.navigationController?.pushViewController(vc, animated: true)
+        }
+        print(loc)
+        print("done")
+        return
+      }
+      
+      // Append the resopnse message to the conversation
+      self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: textResponse))
+      self.finishReceivingMessage()
+      self.speechAndText(text: textResponse)
+      
+      if (intent == "Default Fallback Intent"){
+        self.showSuggestinoKeyword()
+      }else if (intent == "weather intent" && !response.result.actionIncomplete.boolValue){
+        let date = response.result.parameters["date"] as! AIResponseParameter
+        getWeatherFromServer(date: date.stringValue, completion: { (sucess, text) in
+          if sucess{
+            self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: text))
+            self.finishReceivingMessage()
+            self.speechAndText(text: text)
+          }else{
+            let msg = "Sorry. I can get find the weather. Please try again."
+            self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: msg))
+            self.finishReceivingMessage()
+            self.speechAndText(text: msg)
+          }
+        })
+      }else if (intent == "Show hike location intent" && !response.result.actionIncomplete.boolValue){
+        let loc = response.result.parameters["Hike"] as! AIResponseParameter
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+          let vc = MapViewController()
+          vc.destinations = [loc.stringValue]
+          self.navigationController?.pushViewController(vc, animated: true)
+        }
+      }
+    }
+  }
+  
+  // MARK: - Skygear method
+  func getWeatherFromServer(date: String, completion: @escaping (_ success: Bool, _ text: String)->()) {
+    
+    let inPredicate = NSPredicate(format: "date IN %@", [date])
+    let query = SKYQuery(recordType: "TempWeather", predicate: inPredicate)
+    var result = " "
+    print(date)
+    
+    SKYContainer.default().publicCloudDatabase.perform(query) { (results, error) in
+      
+      if error != nil {
+        completion(false, result)
+        return
+      }
+      print("here")
+      for record in results as! [SKYRecord] {
+        print(record)
+        let queryDate = record["date"] as! String
+        print(queryDate)
+        if queryDate == date{
+          result = record["summary"] as! String
+          completion(true, result)
+          return
+        }
+      }
+      completion(false, result)
+    }
+  }
+  
+  // MARK: - Diaglog Flow Api
+  func passMessageToBot(body: String){
+    let request = ApiAI.shared().textRequest()
+    request?.query = body
+    
+    request?.setMappedCompletionBlockSuccess({ (request, response) in
+      let response = response as! AIResponse
+      
+      // Handle special intent
+      self.intentHandler(response: response)
+    }, failure: { (request, error) in
+      print(error!)
+    })
+    
+    ApiAI.shared().enqueue(request)
+  }
+  
+  // MARK: - Text view delegate
+  override func textViewDidBeginEditing(_ textView: UITextView) {
+    self.scrollToBottom(animated: true)
+    if let subview = view.viewWithTag(100){
+      subview.frame.origin.y = self.inputToolbar.frame.origin.y - VIEWHEIGHT
+    }
+  }
+  
+  override func textViewDidEndEditing(_ textView: UITextView) {
+    if let subview = view.viewWithTag(100){
+      subview.frame.origin.y = self.view.frame.size.height - self.inputToolbar.frame.height - VIEWHEIGHT
+    }
+  }
+  
+  override func finishSendingMessage() {
+    super.finishSendingMessage()
+    self.scrollToBottom(animated: true)
+  }
+  
+  // MARK: - Input tool bar button
+  override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
+  {
+    
+    if text == "yes" {
+      let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
+      messages.append(message!)
+      finishSendingMessage()
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+        self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: self.welcomeMessage2))
+        self.finishSendingMessage()
+        self.speechAndText(text: self.welcomeMessage2)
+        self.showSuggestinoKeyword()
+      }
+    }else{
+      let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
+      messages.append(message!)
+      finishSendingMessage()
+      passMessageToBot(body: text)
+    }
+  }
+  
+  override func didPressAccessoryButton(_ sender: UIButton) {
+    
+    let sheet = UIAlertController(title: "More fuction", message: nil, preferredStyle: .actionSheet)
+    let translateAction = UIAlertAction(title: "中文翻譯", style: .default) { (action) in
+      let lastMessageIndex = self.messages.count - 1
+      GoogleTranslateAPI.requestTranslation(target: "zh-TW", textToTranslate: self.messages[self.messages.count - 1].text) { (success, result) in
+        self.messages[lastMessageIndex] = JSQMessage(senderId: self.messages[lastMessageIndex].senderId, displayName: self.messages[lastMessageIndex].senderDisplayName, text: result)
+        self.finishSendingMessage()
+        self.speechAndText(text: result)
+      }
+      self.scrollToBottom(animated: true)
+    }
+    let suggestAction = UIAlertAction(title: "Suggestion", style: .default) { (action) in
+      self.suggestions = NLP.getThreeRandomNonRepeatedKeyword()
+      self.showSuggestinoKeyword()
+      self.scrollToBottom(animated: true)
+    }
+    
+    let hikeAction = UIAlertAction(title: "Hike Suggestion", style: .default) { (action) in
+      self.suggestions = NLP.getThreeRandomHikeKeyword()
+      self.showSuggestinoKeyword()
+      self.scrollToBottom(animated: true)
+    }
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (action) in
+      self.scrollToBottom(animated: true)
+    }
+    sheet.addAction(translateAction)
+    sheet.addAction(hikeAction)
+    sheet.addAction(suggestAction)
+    sheet.addAction(cancelAction)
+    self.present(sheet, animated: true, completion: nil)
+  }
+  
+  // MARK: - Lifecycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    self.senderId = "UserId"
+    self.senderDisplayName = "UserId"
+    self.suggestions = NLP.getThreeRandomNonRepeatedKeyword()
+    
+    messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: welcomeMessage))
+    
+    self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "add.png"), for: UIControlState.normal)
+    self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "add.png"), for: UIControlState.highlighted)
+    self.inputToolbar.contentView.leftBarButtonItem.image
+    self.collectionView.backgroundColor = UIColor(displayP3Red: CGFloat(239.0/255.0), green: CGFloat(242.0/255.0), blue: CGFloat(253.0/255.0), alpha: 1.0)
+    
+    // Navigation item
+    setupNavigationBar()
+    
+    // Register footer in the collection view
+    self.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Footer")
+    self.collectionView.delegate = self
+    
+    /// View Controll Setting
+    self.collectionView.contentInsetAdjustmentBehavior = .never
+    collectionView?.collectionViewLayout.springinessEnabled = false
+    self.collectionView?.reloadData()
+    self.collectionView?.layoutIfNeeded()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    self.inputToolbar.contentView.textView.becomeFirstResponder()
+    speechAndText(text: welcomeMessage)
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    self.inputToolbar.contentView.textView.endEditing(true)
+  }
+  
+  // MARK: - Navigation bar
+  func setupNavigationBar() {
+    navigationItem.title = "Hike Master"
+    let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backButtonTapped))
+    navigationItem.leftBarButtonItem = backButton
+    let button = UIBarButtonItem(image: UIImage(named: "mute"), style: .plain, target: self, action: #selector(muteButtonPressed))
+    button.accessibilityLabel = "Disable play reply message automatically"
+    navigationItem.rightBarButtonItem = button
+  }
+  
+  @objc func backButtonTapped() {
+    self.inputToolbar.contentView.textView.endEditing(true)
+    dismiss(animated: true, completion: nil)
+  }
+  
+  @objc func muteButtonPressed(_ sender: UIBarButtonItem) {
+    if isMute{
+      self.navigationItem.rightBarButtonItem?.image = UIImage(named: "mute")
+      self.navigationItem.rightBarButtonItem?.accessibilityLabel = "Enable play reply message automatically"
+      isMute = false
+    }else{
+      self.navigationItem.rightBarButtonItem?.image = UIImage(named: "notmute")
+      self.navigationItem.rightBarButtonItem?.accessibilityLabel = "Disable play reply message automatically"
+      isMute = true
+    }
+  }
+  
+  // MARK: - JSQMessage View Controll
+  override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat
+  {
+    return 0
+  }
+  
+  override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource!
+  {
+    if (messages[indexPath.row].senderId == self.senderId){
+      return JSQMessagesAvatarImageFactory.avatarImage(withPlaceholder: UIImage(named:"avatar_user")!, diameter: 100)
+    }
+    return JSQMessagesAvatarImageFactory.avatarImage(withPlaceholder: UIImage(named:"avatar_bot")!, diameter: 100)
+  }
+  
+  override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource!
+  {
+    return messages[indexPath.item].senderId == senderId ? outgoingBubble : incomingBubble
+  }
+  
+  override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
+  {
+    return messages[indexPath.item]
+  }
+  
+  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+  {
+    return messages.count
+  }
+  
+  override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    return CGSize(width: self.collectionView.bounds.width, height: 50)
+  }
+  
+  override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    
+    var reusableView = UICollectionReusableView()
+    reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Footer", for: indexPath)
+    
+    return reusableView
+  }
+  
+}
+

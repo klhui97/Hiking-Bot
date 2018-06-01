@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B2EB94E2029D42400C926C0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB94D2029D42400C926C0 /* LoginVC.swift */; };
+		6B313EAD207CA81A001D2EF3 /* StepsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EA7207CA81A001D2EF3 /* StepsTableViewCell.xib */; };
+		6B313EAE207CA81A001D2EF3 /* StepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B313EA8207CA81A001D2EF3 /* StepsTableViewCell.swift */; };
+		6B313EAF207CA81A001D2EF3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B313EA9207CA81A001D2EF3 /* MapViewController.swift */; };
+		6B313EB0207CA81A001D2EF3 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EAA207CA81A001D2EF3 /* MapViewController.xib */; };
+		6B313EB1207CA81A001D2EF3 /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B313EAB207CA81A001D2EF3 /* StepsTableViewController.swift */; };
+		6B313EB2207CA81A001D2EF3 /* StepsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EAC207CA81A001D2EF3 /* StepsTableViewController.xib */; };
+		6B313EB4207CC013001D2EF3 /* mapicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EB3207CC013001D2EF3 /* mapicon.png */; };
+		6B313EB6207E43F6001D2EF3 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EB5207E43F5001D2EF3 /* add.png */; };
+		6B681D4F2067E2B30035603A /* DLchatbotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */; };
+		6B681D512067E33C0035603A /* NLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D502067E33B0035603A /* NLP.swift */; };
+		6B681D532067E41D0035603A /* GoogleTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */; };
+		6B681D552067E6870035603A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D542067E6870035603A /* RoundButton.swift */; };
+		6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B4652202C8B0B0042FE63 /* ChatVC.swift */; };
+		6B9DE72E20833F840024CA41 /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72420833F840024CA41 /* SCNVector3+Extensions.swift */; };
+		6B9DE72F20833F840024CA41 /* SceneLocationEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72520833F840024CA41 /* SceneLocationEstimate.swift */; };
+		6B9DE73020833F840024CA41 /* SceneLocationEstimate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72620833F840024CA41 /* SceneLocationEstimate+Extensions.swift */; };
+		6B9DE73120833F840024CA41 /* FloatingPoint+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72720833F840024CA41 /* FloatingPoint+Radians.swift */; };
+		6B9DE73220833F840024CA41 /* LocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72820833F840024CA41 /* LocationNode.swift */; };
+		6B9DE73320833F840024CA41 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72920833F840024CA41 /* CGPoint+Extensions.swift */; };
+		6B9DE73420833F840024CA41 /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72A20833F840024CA41 /* CLLocation+Extensions.swift */; };
+		6B9DE73520833F840024CA41 /* SceneLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72B20833F840024CA41 /* SceneLocationView.swift */; };
+		6B9DE73620833F840024CA41 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72C20833F840024CA41 /* LocationManager.swift */; };
+		6B9DE73720833F840024CA41 /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72D20833F840024CA41 /* SCNNode+Extensions.swift */; };
+		6B9DE73920833FCB0024CA41 /* HikingARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE73820833FCB0024CA41 /* HikingARViewController.swift */; };
+		6BB3922B20C1943700727B45 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3922A20C1943700727B45 /* SecretKey.swift */; };
+		6BBB67B3792066078539B736 /* Pods_hikingbot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */; };
+		6BF38A7320296B780063BEB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38A7220296B780063BEB8 /* AppDelegate.swift */; };
+		6BF38A7820296B780063BEB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7620296B780063BEB8 /* Main.storyboard */; };
+		6BF38A7A20296B780063BEB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7920296B780063BEB8 /* Assets.xcassets */; };
+		6BF38A7D20296B780063BEB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7B20296B780063BEB8 /* LaunchScreen.storyboard */; };
+		6BFF05CA206159A2002A0319 /* avatar_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BFF05C9206159A2002A0319 /* avatar_user.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hikingbot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32E64464941697EEE0F0BB52 /* Pods-hikingbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hikingbot.release.xcconfig"; path = "Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot.release.xcconfig"; sourceTree = "<group>"; };
+		6B2EB94D2029D42400C926C0 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6B313EA7207CA81A001D2EF3 /* StepsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTableViewCell.xib; sourceTree = "<group>"; };
+		6B313EA8207CA81A001D2EF3 /* StepsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTableViewCell.swift; sourceTree = "<group>"; };
+		6B313EA9207CA81A001D2EF3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		6B313EAA207CA81A001D2EF3 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		6B313EAB207CA81A001D2EF3 /* StepsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTableViewController.swift; sourceTree = "<group>"; };
+		6B313EAC207CA81A001D2EF3 /* StepsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTableViewController.xib; sourceTree = "<group>"; };
+		6B313EB3207CC013001D2EF3 /* mapicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapicon.png; sourceTree = "<group>"; };
+		6B313EB5207E43F5001D2EF3 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLchatbotViewController.swift; sourceTree = "<group>"; };
+		6B681D502067E33B0035603A /* NLP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLP.swift; sourceTree = "<group>"; };
+		6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleTranslateAPI.swift; sourceTree = "<group>"; };
+		6B681D542067E6870035603A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		6B9B4652202C8B0B0042FE63 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		6B9DE72420833F840024CA41 /* SCNVector3+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE72520833F840024CA41 /* SceneLocationEstimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLocationEstimate.swift; sourceTree = "<group>"; };
+		6B9DE72620833F840024CA41 /* SceneLocationEstimate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SceneLocationEstimate+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE72720833F840024CA41 /* FloatingPoint+Radians.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Radians.swift"; sourceTree = "<group>"; };
+		6B9DE72820833F840024CA41 /* LocationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNode.swift; sourceTree = "<group>"; };
+		6B9DE72920833F840024CA41 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE72A20833F840024CA41 /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE72B20833F840024CA41 /* SceneLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLocationView.swift; sourceTree = "<group>"; };
+		6B9DE72C20833F840024CA41 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6B9DE72D20833F840024CA41 /* SCNNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNNode+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE73820833FCB0024CA41 /* HikingARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikingARViewController.swift; sourceTree = "<group>"; };
+		6BB3922A20C1943700727B45 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
+		6BF38A6F20296B780063BEB8 /* hikingbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hikingbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BF38A7220296B780063BEB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6BF38A7720296B780063BEB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6BF38A7920296B780063BEB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6BF38A7C20296B780063BEB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6BF38A7E20296B780063BEB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BFF05C9206159A2002A0319 /* avatar_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar_user.png; sourceTree = "<group>"; };
+		7FC5EDCC2550ACCB89F7B918 /* Pods-hikingbot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hikingbot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6BF38A6C20296B780063BEB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BBB67B3792066078539B736 /* Pods_hikingbot.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		36A32CE124B1BD70DFB263C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FC5EDCC2550ACCB89F7B918 /* Pods-hikingbot.debug.xcconfig */,
+				32E64464941697EEE0F0BB52 /* Pods-hikingbot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6B17C71F2045012200A0DB3E /* JSQMessage */ = {
+			isa = PBXGroup;
+			children = (
+				6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */,
+				6B681D542067E6870035603A /* RoundButton.swift */,
+				6B681D502067E33B0035603A /* NLP.swift */,
+				6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */,
+			);
+			path = JSQMessage;
+			sourceTree = "<group>";
+		};
+		6B2EB94B2029D35100C926C0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6B313EB3207CC013001D2EF3 /* mapicon.png */,
+				6B313EB5207E43F5001D2EF3 /* add.png */,
+				6BFF05C9206159A2002A0319 /* avatar_user.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6B2EB94C2029D40700C926C0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6B9B4652202C8B0B0042FE63 /* ChatVC.swift */,
+				6B2EB94D2029D42400C926C0 /* LoginVC.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6B313EA6207CA81A001D2EF3 /* Map View */ = {
+			isa = PBXGroup;
+			children = (
+				6B313EA8207CA81A001D2EF3 /* StepsTableViewCell.swift */,
+				6B313EA7207CA81A001D2EF3 /* StepsTableViewCell.xib */,
+				6B313EA9207CA81A001D2EF3 /* MapViewController.swift */,
+				6B313EAA207CA81A001D2EF3 /* MapViewController.xib */,
+				6B313EAB207CA81A001D2EF3 /* StepsTableViewController.swift */,
+				6B313EAC207CA81A001D2EF3 /* StepsTableViewController.xib */,
+			);
+			path = "Map View";
+			sourceTree = "<group>";
+		};
+		6B9DE6EE20831E910024CA41 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				6B9DE73820833FCB0024CA41 /* HikingARViewController.swift */,
+				6B9DE72320833F840024CA41 /* Source */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		6B9DE72320833F840024CA41 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6B9DE72420833F840024CA41 /* SCNVector3+Extensions.swift */,
+				6B9DE72520833F840024CA41 /* SceneLocationEstimate.swift */,
+				6B9DE72620833F840024CA41 /* SceneLocationEstimate+Extensions.swift */,
+				6B9DE72720833F840024CA41 /* FloatingPoint+Radians.swift */,
+				6B9DE72820833F840024CA41 /* LocationNode.swift */,
+				6B9DE72920833F840024CA41 /* CGPoint+Extensions.swift */,
+				6B9DE72A20833F840024CA41 /* CLLocation+Extensions.swift */,
+				6B9DE72B20833F840024CA41 /* SceneLocationView.swift */,
+				6B9DE72C20833F840024CA41 /* LocationManager.swift */,
+				6B9DE72D20833F840024CA41 /* SCNNode+Extensions.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		6BF38A6620296B780063BEB8 = {
+			isa = PBXGroup;
+			children = (
+				6BF38A7120296B780063BEB8 /* hikingbot */,
+				6BF38A7020296B780063BEB8 /* Products */,
+				36A32CE124B1BD70DFB263C3 /* Pods */,
+				C75F9FC6C4F10B48F3A27C4B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6BF38A7020296B780063BEB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6BF38A6F20296B780063BEB8 /* hikingbot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6BF38A7120296B780063BEB8 /* hikingbot */ = {
+			isa = PBXGroup;
+			children = (
+				6B2EB94C2029D40700C926C0 /* Main */,
+				6B2EB94B2029D35100C926C0 /* Resources */,
+				6B313EA6207CA81A001D2EF3 /* Map View */,
+				6B17C71F2045012200A0DB3E /* JSQMessage */,
+				6B9DE6EE20831E910024CA41 /* AR */,
+				6BF38A7220296B780063BEB8 /* AppDelegate.swift */,
+				6BB3922A20C1943700727B45 /* SecretKey.swift */,
+				6BF38A7620296B780063BEB8 /* Main.storyboard */,
+				6BF38A7920296B780063BEB8 /* Assets.xcassets */,
+				6BF38A7B20296B780063BEB8 /* LaunchScreen.storyboard */,
+				6BF38A7E20296B780063BEB8 /* Info.plist */,
+			);
+			path = hikingbot;
+			sourceTree = "<group>";
+		};
+		C75F9FC6C4F10B48F3A27C4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6BF38A6E20296B780063BEB8 /* hikingbot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BF38A8120296B780063BEB8 /* Build configuration list for PBXNativeTarget "hikingbot" */;
+			buildPhases = (
+				893FB8DA1B6000042BAE4237 /* [CP] Check Pods Manifest.lock */,
+				6BF38A6B20296B780063BEB8 /* Sources */,
+				6BF38A6C20296B780063BEB8 /* Frameworks */,
+				6BF38A6D20296B780063BEB8 /* Resources */,
+				0EC99B1BC3CFF869564AB539 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hikingbot;
+			productName = hikingbot;
+			productReference = 6BF38A6F20296B780063BEB8 /* hikingbot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6BF38A6720296B780063BEB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = KL;
+				TargetAttributes = {
+					6BF38A6E20296B780063BEB8 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6BF38A6A20296B780063BEB8 /* Build configuration list for PBXProject "hikingbot" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6BF38A6620296B780063BEB8;
+			productRefGroup = 6BF38A7020296B780063BEB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6BF38A6E20296B780063BEB8 /* hikingbot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6BF38A6D20296B780063BEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B313EB6207E43F6001D2EF3 /* add.png in Resources */,
+				6BFF05CA206159A2002A0319 /* avatar_user.png in Resources */,
+				6B313EB0207CA81A001D2EF3 /* MapViewController.xib in Resources */,
+				6BF38A7D20296B780063BEB8 /* LaunchScreen.storyboard in Resources */,
+				6BF38A7A20296B780063BEB8 /* Assets.xcassets in Resources */,
+				6B313EAD207CA81A001D2EF3 /* StepsTableViewCell.xib in Resources */,
+				6B313EB4207CC013001D2EF3 /* mapicon.png in Resources */,
+				6BF38A7820296B780063BEB8 /* Main.storyboard in Resources */,
+				6B313EB2207CA81A001D2EF3 /* StepsTableViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EC99B1BC3CFF869564AB539 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ApiAI/ApiAI.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/MagicKit-Skygear/MagicKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SKYKit/SKYKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARCL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ApiAI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKYKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		893FB8DA1B6000042BAE4237 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-hikingbot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6BF38A6B20296B780063BEB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B313EAF207CA81A001D2EF3 /* MapViewController.swift in Sources */,
+				6B681D552067E6870035603A /* RoundButton.swift in Sources */,
+				6B9DE73320833F840024CA41 /* CGPoint+Extensions.swift in Sources */,
+				6B681D532067E41D0035603A /* GoogleTranslateAPI.swift in Sources */,
+				6BF38A7320296B780063BEB8 /* AppDelegate.swift in Sources */,
+				6B681D512067E33C0035603A /* NLP.swift in Sources */,
+				6B9DE73920833FCB0024CA41 /* HikingARViewController.swift in Sources */,
+				6BB3922B20C1943700727B45 /* SecretKey.swift in Sources */,
+				6B9DE73420833F840024CA41 /* CLLocation+Extensions.swift in Sources */,
+				6B2EB94E2029D42400C926C0 /* LoginVC.swift in Sources */,
+				6B9DE73720833F840024CA41 /* SCNNode+Extensions.swift in Sources */,
+				6B313EAE207CA81A001D2EF3 /* StepsTableViewCell.swift in Sources */,
+				6B313EB1207CA81A001D2EF3 /* StepsTableViewController.swift in Sources */,
+				6B681D4F2067E2B30035603A /* DLchatbotViewController.swift in Sources */,
+				6B9DE73020833F840024CA41 /* SceneLocationEstimate+Extensions.swift in Sources */,
+				6B9DE72F20833F840024CA41 /* SceneLocationEstimate.swift in Sources */,
+				6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */,
+				6B9DE73520833F840024CA41 /* SceneLocationView.swift in Sources */,
+				6B9DE73220833F840024CA41 /* LocationNode.swift in Sources */,
+				6B9DE72E20833F840024CA41 /* SCNVector3+Extensions.swift in Sources */,
+				6B9DE73620833F840024CA41 /* LocationManager.swift in Sources */,
+				6B9DE73120833F840024CA41 /* FloatingPoint+Radians.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6BF38A7620296B780063BEB8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BF38A7720296B780063BEB8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6BF38A7B20296B780063BEB8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BF38A7C20296B780063BEB8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6BF38A7F20296B780063BEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6BF38A8020296B780063BEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6BF38A8220296B780063BEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FC5EDCC2550ACCB89F7B918 /* Pods-hikingbot.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8SBL643TY6;
+				INFOPLIST_FILE = hikingbot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KL.personal.hikingbot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6BF38A8320296B780063BEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32E64464941697EEE0F0BB52 /* Pods-hikingbot.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8SBL643TY6;
+				INFOPLIST_FILE = hikingbot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KL.personal.hikingbot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6BF38A6A20296B780063BEB8 /* Build configuration list for PBXProject "hikingbot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BF38A7F20296B780063BEB8 /* Debug */,
+				6BF38A8020296B780063BEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BF38A8120296B780063BEB8 /* Build configuration list for PBXNativeTarget "hikingbot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BF38A8220296B780063BEB8 /* Debug */,
+				6BF38A8320296B780063BEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6BF38A6720296B780063BEB8 /* Project object */;
+}
